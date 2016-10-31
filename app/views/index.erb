@@ -1,12 +1,15 @@
   
 
-  <h1 style="color: Chartreuse; box-shadow: 5px 5px 5px silver; margin-right: 30%">Bienvenido a una Página!</h1>
+  <h1 style="color: Chartreuse; box-shadow: 5px 5px 5px silver; margin-right: 27%">Bienvenido a Dummy Users!</h1>
   <br>
   <hr>
-  <% if @error %>
-  <p><%= @error %></p>
-    <% end %>
+  
+  
   <center>
+  <% if @error %>
+  <h3><strong><%= @error %></strong></h3>
+  <% end %>
+  <br>
   <h3>Iniciar sesión</h3>
 
   <form action="/log_in" method="post">

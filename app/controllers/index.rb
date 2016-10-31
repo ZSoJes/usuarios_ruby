@@ -7,8 +7,8 @@ end
 get '/' do
   # La siguiente linea hace render de la vista 
   # que esta en app/views/index.erb
-  if params[:error] == true
-    @error = "no puedes acceder esta session"
+  if params[:error] == 'true'
+    @error = "El acceso ha fallado, rectifique su correo y/o contraseña"
   end
 
   erb :index
@@ -22,33 +22,16 @@ post '/log_in' do
 
   if @user != nil
     session[:user_id] = @user.id
-    redirect to "/users/#{@user.id}"
-  else
-    redirect to '/log_out'
+    redirect to "/users/#{@user.id}"      # evaluar si redirigir a la sesion 
+  else                                    # o salir de la sesion
+
+    redirect to '/?error=true'
   end
 end
 
-get '/users/:id' do
+get '/users/:id' do     # muestra un especifico usuario por su id
   erb :log_in
 end
-
-
-# get '/log_in' do
-#   if session[:user_id] != nil
-#     erb :log_in
-#   else
-#     erb :error
-#   end
-# end
-
-# get '/log_in/:user_id' do
-  
-#   exite = User.find_by(id: params[:user_id])
-#   if exite != nil
-#     erb :error_2
-#   end
-
-# end
 
 get '/log_out' do
   @current_user = session[:user_id] = nil
@@ -69,7 +52,7 @@ post '/create_user' do  # permite trabajar con los datos dentro de create_user
  usuario = User.create(name: nuev_name, password: nuev_pass, email: nuev_mail).valid?
  
  unless usuario
-  erb :error_2
+  erb :error
  else    
   puts "agregado satisfactoriamente"
   redirect to('/')
