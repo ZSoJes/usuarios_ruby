@@ -1,0 +1,24 @@
+  
+
+  <h1 style="color: Chartreuse; box-shadow: 5px 5px 5px silver; margin-right: 30%">Bienvenido a una Página!</h1>
+  <br>
+  <hr>
+  <% if @error %>
+  <p><%= @error %></p>
+    <% end %>
+  <center>
+  <h3>Iniciar sesión</h3>
+
+  <form action="/log_in" method="post">
+    <input type="email" name="email" placeholder="Email">
+  <br>
+  <br>
+    <input type="password" name="pass" placeholder="Contraseña" maxlength="10">
+  <br>
+  <br>
+    <input type="submit" value="Iniciar Sesión" style="text-decoration: none; padding: 10px;border: 2px solid BurlyWood;border-radius: 5px; background-color: Brown; color: white; font-size: 15px">
+  </form> 
+  </center> 
+  <hr>
+  <br>
+  <a href="/create_user" style="text-decoration: none; padding: 10px;border: 2px solid BurlyWood;border-radius: 5px; background-color: Brown; color: white; font-size: 15px">Crear Usuario</a>
